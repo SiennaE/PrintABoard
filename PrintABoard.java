@@ -41,9 +41,9 @@ public class PrintABoard
     }
     static String[][] customize(String[][] board)
     {
-        int number =  5;
-        int iCount = 0;
-        int jCount = 0;
+        int number = 5;
+        int iCount = 1;
+        int jCount = 1;
         Scanner key = new Scanner(System.in);
         
         for (int i = 0; i < number; i++)
@@ -53,7 +53,8 @@ public class PrintABoard
                 iCount = i + 1;
                 jCount = j + 1;
                 
-                System.out.print("Give the value for the string in position" + i + ", " + j + ": ");
+                System.out.print("Give the value for the string in position" + iCount + ", " + jCount + ": ");
+                board[i][j] = key.next();
             }
         }
         return board;
@@ -91,13 +92,15 @@ public class PrintABoard
             
             printBoard(myBoard);
             
-            System.out.println();
-            System.out.print("You will change one element. Input the x-coordinate: ");
+            myBoard = customize(myBoard);
+            
+            printBoard(myBoard);
+            
+            System.out.print("You will change one element. Give the x-coordinate: ");
             x = myScanner.nextInt();
-            System.out.print("Now give us the y-coordinate (this is read from top to bottom): ");
+            System.out.print("Now, give us the y-coordinate: ");
             y = myScanner.nextInt();
             
-            System.out.println();
             changeBoardElement(myBoard, x, y);
             
             printBoard(myBoard);
